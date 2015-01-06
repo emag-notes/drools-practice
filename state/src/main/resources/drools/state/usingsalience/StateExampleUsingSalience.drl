@@ -1,0 +1,46 @@
+package drools.state.usingsalience
+
+import drools.state.State;
+
+declare type State
+    @propertyChangeSupport
+end
+
+rule "Bootstrap"
+	when
+	   a : State(name == "A", state == State.NOTRUN)
+	then
+	   System.out.println(a.getName() + " finished");
+	   a.setState(State.FINISHED);
+end
+
+rule "A to B"
+    when
+        State(name == "A", state == State.FINISHED)
+        b : State(name == "B", state == State.NOTRUN)
+    then
+        System.out.println(b.getName() + " finished");
+        b.setState(State.FINISHED);
+end
+
+rule "B to C"
+    salience 10
+    when
+        State(name == "B", state == State.FINISHED)
+        c : State(name == "C", state == State.NOTRUN)
+    then
+        System.out.println(c.getName() + " finished");
+        c.setState(State.FINISHED);
+end
+
+rule "B to D"
+    // rule "B to C" と "B to D" の Activation は同じタイミングで作成されるが、salience の大きい方のルールの Activation が実行される
+    // なお、デフォルトの salience の値は 0 
+    salience 100
+    when
+        State(name == "B", state == State.FINISHED)
+        d : State(name == "D", state == State.NOTRUN)
+    then
+        System.out.println(d.getName() + " finished");
+        d.setState(State.FINISHED);
+end
