@@ -18,6 +18,7 @@
   <modules>
     <module>helloworld</module>
     <module>state</module>
+    <module>fibonacci</module>
   </modules>
 
   <dependencyManagement>
