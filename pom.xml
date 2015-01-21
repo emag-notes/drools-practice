@@ -20,6 +20,7 @@
     <module>state</module>
     <module>fibonacci</module>
     <module>banking</module>
+    <module>decisiontable</module>
   </modules>
 
   <dependencyManagement>

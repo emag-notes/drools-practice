@@ -49,3 +49,7 @@ rebel.xml
 
 # Vagrant
 .vagrant
+
+# Office
+.~lock.*#
+
