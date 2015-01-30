@@ -21,6 +21,7 @@
     <module>fibonacci</module>
     <module>banking</module>
     <module>decisiontable</module>
+    <module>petstore</module>
   </modules>
 
   <dependencyManagement>
