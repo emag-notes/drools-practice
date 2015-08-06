@@ -11,8 +11,8 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <version.org.drools>6.2.0.CR2</version.org.drools>
-    <version.junit>4.11</version.junit>
+    <version.org.drools>6.2.0.Final</version.org.drools>
+    <version.junit>4.12</version.junit>
   </properties>
 
   <modules>
