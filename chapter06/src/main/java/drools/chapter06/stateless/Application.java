@@ -8,10 +8,13 @@ import java.util.Date;
 public class Application {
 
   private Date dateApplied;
-  private boolean valid;
+  private boolean valid = true;
 
   public Application() {
-    this.valid = true;
+  }
+
+  public Application(Date dateApplied) {
+    this.dateApplied = dateApplied;
   }
 
   public Date getDateApplied() {

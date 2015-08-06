@@ -1,11 +1,13 @@
 package drools.chapter06.stateless;
 
+import org.junit.BeforeClass;
 import org.junit.Test;
 import org.kie.api.KieServices;
 import org.kie.api.runtime.KieContainer;
 import org.kie.api.runtime.StatelessKieSession;
 
 import java.util.Arrays;
+import java.util.Date;
 
 import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.*;
@@ -15,8 +17,14 @@ import static org.junit.Assert.*;
  */
 public class LicenseApplicationTest {
 
+  @BeforeClass
+  public static void setUp() throws Exception {
+    // Setup
+    System.setProperty("drools.dateformat", "yyyy-MM-dd");
+  }
+
   @Test
-  public void test() throws Exception {
+  public void test1() throws Exception {
     // Setup
     KieServices kieServices = KieServices.Factory.get();
     KieContainer kContainer = kieServices.getKieClasspathContainer();
@@ -37,4 +45,25 @@ public class LicenseApplicationTest {
     // Verify
     assertThat(application.isValid(), is(false));
   }
+
+  @Test
+  public void test2() throws Exception {
+    // Setup
+    KieServices kieServices = KieServices.Factory.get();
+    KieContainer kContainer = kieServices.getKieClasspathContainer();
+
+    StatelessKieSession kSession = kContainer.newStatelessKieSession();
+
+    Application application = new Application(new Date());
+    System.out.println(application);
+
+    assertThat(application.isValid(), is(true));
+
+    // Exercise
+    kSession.execute(application);
+
+    // Verify
+    assertThat(application.isValid(), is(false));
+  }
+
 }
