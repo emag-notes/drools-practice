@@ -12,6 +12,8 @@
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <version.org.drools>6.2.0.Final</version.org.drools>
+    <version.org.slf4j>1.7.2</version.org.slf4j>
+    <version.ch.qos.logback>1.0.9</version.ch.qos.logback>
     <version.junit>4.12</version.junit>
   </properties>
 
@@ -22,6 +24,7 @@
     <module>banking</module>
     <module>decisiontable</module>
     <module>petstore</module>
+    <module>chapter06</module>
   </modules>
 
   <dependencyManagement>
@@ -37,6 +40,21 @@
   </dependencyManagement>
 
   <dependencies>
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-api</artifactId>
+      <version>${version.org.slf4j}</version>
+    </dependency>
+    <dependency>
+      <groupId>ch.qos.logback</groupId>
+      <artifactId>logback-core</artifactId>
+      <version>${version.ch.qos.logback}</version>
+    </dependency>
+    <dependency>
+      <groupId>ch.qos.logback</groupId>
+      <artifactId>logback-classic</artifactId>
+      <version>${version.ch.qos.logback}</version>
+    </dependency>
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
