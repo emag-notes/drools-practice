@@ -1,6 +1,7 @@
 package drools.chapter06.stateless;
 
-import org.junit.BeforeClass;
+import drools.chapter06.PropertiesRule;
+import org.junit.Rule;
 import org.junit.Test;
 import org.kie.api.KieServices;
 import org.kie.api.runtime.KieContainer;
@@ -17,11 +18,8 @@ import static org.junit.Assert.*;
  */
 public class LicenseApplicationTest {
 
-  @BeforeClass
-  public static void setUp() throws Exception {
-    // Setup
-    System.setProperty("drools.dateformat", "yyyy-MM-dd");
-  }
+  @Rule
+  public PropertiesRule propertiesRule = new PropertiesRule();
 
   @Test
   public void test1() throws Exception {
