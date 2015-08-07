@@ -52,3 +52,13 @@ when
 then
     System.out.println("Everything is ok");
 end
+
+rule "Show Sprinklers"
+
+when
+    $room: Room()
+    $sprinkler : Sprinkler(room == $room)
+then
+    System.out.println("room: " + $room.getName() + " " +
+                       "sprinkler: " + $sprinkler.getRoom().getName());
+end

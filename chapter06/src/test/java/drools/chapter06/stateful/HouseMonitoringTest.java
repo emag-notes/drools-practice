@@ -43,7 +43,7 @@ public class HouseMonitoringTest {
       kSession.insert(sprinkler);
     });
   }
-  
+
   @Test
   public void test1() throws Exception {
     // Exercise & Verify
