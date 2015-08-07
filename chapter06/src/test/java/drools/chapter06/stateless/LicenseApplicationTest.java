@@ -27,7 +27,7 @@ public class LicenseApplicationTest {
     KieServices kieServices = KieServices.Factory.get();
     KieContainer kContainer = kieServices.getKieClasspathContainer();
 
-    StatelessKieSession kSession = kContainer.newStatelessKieSession();
+    StatelessKieSession kSession = kContainer.newStatelessKieSession("LicenseApplicationKS");
 
     Applicant applicant = new Applicant("Mr John Smith", 16);
     Application application = new Application();
@@ -50,7 +50,7 @@ public class LicenseApplicationTest {
     KieServices kieServices = KieServices.Factory.get();
     KieContainer kContainer = kieServices.getKieClasspathContainer();
 
-    StatelessKieSession kSession = kContainer.newStatelessKieSession();
+    StatelessKieSession kSession = kContainer.newStatelessKieSession("LicenseApplicationKS");
 
     Application application = new Application(new Date());
     System.out.println(application);

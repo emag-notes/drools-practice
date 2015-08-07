@@ -1,2 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<kmodule xmlns="http://jboss.org/kie/6.0.0/kmodule"/>
+<kmodule xmlns="http://jboss.org/kie/6.0.0/kmodule">
+
+  <kbase name="LicenseApplicationKB" packages="drools.chapter06.stateless">
+    <ksession name="LicenseApplicationKS" type="stateless"/>
+  </kbase>
+
+  <kbase name="HouseMonitoringKB" packages="drools.chapter06.stateful">
+    <ksession name="HouseMonitoringKS"/>
+  </kbase>
+
+  <kbase name="BasicCashFlowKB" packages="drools.chapter06.executioncontrol.basic">
+    <ksession name="BasicCashFlowKS"/>
+  </kbase>
+
+  <kbase name="SalienceCashFlowKB" packages="drools.chapter06.executioncontrol.salience_test">
+    <ksession name="SalienceCashFlowKS"/>
+  </kbase>
+
+  <kbase name="AgendaGroupCashFlowKB" packages="drools.chapter06.executioncontrol.agendagroup">
+    <ksession name="AgendaGroupCashFlowKS"/>
+  </kbase>
+
+</kmodule>

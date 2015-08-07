@@ -1,0 +1,48 @@
+package drools.chapter06.executioncontrol.agendagroup
+
+dialect "mvel"
+
+rule "increase balance for credits"
+
+agenda-group "calculation"
+
+when
+    ap : AccountPeriod()
+    ac : Account($accountNo : accountNo)
+    CashFlow(type == Type.CREDIT,
+             accountNo == $accountNo,
+             date >= ap.start && <= ap.getEnd(), // ap.end is OK, but Intellij IDEA drools plugin displays error...
+             $amount : amount)
+then
+    System.out.println("agenda-group [calculation] increase");
+    ac.balance += $amount;
+end
+
+
+rule "decrease balance for dedits"
+
+when
+    ap : AccountPeriod()
+    ac : Account($accountNo : accountNo)
+    CashFlow(type == Type.DEBIT,
+             accountNo == $accountNo,
+             date >= ap.getStart() && <= ap.getEnd(),
+             $amount : amount)
+then
+//    ac.balance -= $amount; -> Error: String index out of range: -1]]
+    System.out.println("decrease");
+    ac.balance = ac.balance - $amount;
+end
+
+
+rule "Print balance for AccountPeriod"
+
+agenda-group "report"
+salience -100
+
+when
+    ap : AccountPeriod()
+    ac : Account()
+then
+    System.out.println("agenda-group [report] " + ac.accountNo + " : " + ac.balance);
+end

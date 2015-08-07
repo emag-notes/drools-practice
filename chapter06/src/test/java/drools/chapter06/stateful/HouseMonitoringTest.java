@@ -37,7 +37,7 @@ public class HouseMonitoringTest {
     // Setup
     KieServices kieServices = KieServices.Factory.get();
     KieContainer kContainer = kieServices.getKieClasspathContainer();
-    kSession = kContainer.newKieSession();
+    kSession = kContainer.newKieSession("HouseMonitoringKS");
 
     String[] names = {"kitchen", "bedroom", "office", "livingroom"};
 
