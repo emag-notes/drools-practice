@@ -1,10 +1,13 @@
 package drools.chapter06.stateful;
 
 import drools.chapter06.PropertiesRule;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.TestName;
 import org.kie.api.KieServices;
+import org.kie.api.logger.KieRuntimeLogger;
 import org.kie.api.runtime.KieContainer;
 import org.kie.api.runtime.KieSession;
 import org.kie.api.runtime.rule.FactHandle;
@@ -21,7 +24,12 @@ public class HouseMonitoringTest {
   @Rule
   public PropertiesRule propertiesRule = new PropertiesRule();
 
+  @Rule
+  public TestName testName = new TestName();
+
   private KieSession kSession;
+  private KieRuntimeLogger logger;
+
   private Map<String, Room> name2room;
 
   @Before
@@ -42,6 +50,15 @@ public class HouseMonitoringTest {
       Sprinkler sprinkler = new Sprinkler(room);
       kSession.insert(sprinkler);
     });
+
+    logger = kieServices.getLoggers()
+      .newFileLogger(kSession, HouseMonitoringTest.class.getSimpleName() + "#" + testName.getMethodName());
+  }
+
+  @After
+  public void tearDown() throws Exception {
+    // After
+    logger.close();
   }
 
   @Test
